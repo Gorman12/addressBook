@@ -9,6 +9,17 @@ function Address(street, city, state) {
   this.city = city;
   this.state = state;
 }
+function resetFields() {
+  $("input#new-first-name").val("");
+  $("input#new-last-name").val("");
+  $("input.new-street").val("");
+  $("input.new-city").val("");
+  $("input.state").val("");
+}
+
+function additionalAddress() {
+
+}
 
 Contact.prototype.fullName = function() {
   return (this.firstName + " " + this.lastName);
@@ -21,7 +32,7 @@ Address.prototype.fullAddress = function() {
 
 $(document).ready(function() {
   $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
+    $("#additional-addresses").append('<div class="new-address">' +
                                  '<div class="form-group">' +
                                    '<label for="new-street">Street</label>' +
                                    '<input type="text" class="form-control new-street">' +
@@ -64,10 +75,7 @@ $(document).ready(function() {
           $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
     });
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input.new-street").val("");
-    $("input.new-city").val("");
-    $("input.new-state").val("");
+    $ (resetFields());
+    $ ("#additional-addresses").hide();
   });
 });
